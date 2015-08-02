@@ -12,12 +12,12 @@ import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 import com.springHibernate.dao.PersonDAOImpl;
 import com.springHibernate.dao.PersonDAOImpl2;
 import com.springHibernate.service.PersonService;
-
+/*
 @Configuration
-@ComponentScan(value="com.springHibernate")
+@ComponentScan(value="com.springHibernate")*/
 public class AppConfig {
 	
-	
+	/*
 	@Bean
 	@Profile("DEV")
 	public BasicDataSource dataSource(){
@@ -47,6 +47,6 @@ public class AppConfig {
 		return sessionFactory;
 	}
 	
-	
+	*/
 		
 }

@@ -10,7 +10,6 @@ import com.springHibernate.model.Person;
 
 
 @Component
-@Profile("DEV")
 public class PersonService {
 
 	
@@ -25,8 +24,10 @@ public class PersonService {
 		this.personDAO = personDAO;
 	}
 
-	public void savePerson(Person p){
+	public void savePerson(Person p) throws MyException{
 		personDAO.save(p);
+		personDAO.list();
+		throw new MyException();
 	}
 	
 	

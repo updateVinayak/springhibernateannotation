@@ -1,27 +1,32 @@
 package com.springHibernate.main;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.springHibernate.config.AppConfig;
 import com.springHibernate.model.Person;
+import com.springHibernate.service.MyException;
 import com.springHibernate.service.PersonService;
 
 public class SpringHibernateMain {
 
 	public static void main(String[] args) {
 		
-		//ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		/*AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.getEnvironment().setActiveProfiles("DEV");
 		context.register(AppConfig.class); 
-		context.refresh();
+		context.refresh();*/
 		
 		Person person = new Person();
-        person.setName("Prafull"); 
+        person.setName("Swati 12"); 
         person.setCountry("India");
         
         PersonService personService = context.getBean(PersonService.class);
-        personService.savePerson(person);
+        try {
+			personService.savePerson(person);
+		} catch (MyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
         /*
         PersonDAO personDAO = context.getBean(PersonDAOImpl.class);

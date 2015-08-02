@@ -8,7 +8,7 @@
 
 	
 	<context:annotation-config/>
-<!--	 
+
 	<context:component-scan base-package="com.springHibernate" />
 
 	
@@ -19,6 +19,10 @@
         <property name="username" value="system" />
         <property name="password" value="India3380" />
     </bean>
+    
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	    <property name="sessionFactory" ref="sessionFactory" />
+	</bean>
     
      
     <bean id="sessionFactory"
@@ -37,7 +41,24 @@
             </props>
         </property>
     </bean>
-     -->
+
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+        
+        <tx:attributes>
+            <!-- all methods starting with 'get' are read-only -->
+            <tx:method name="savePerson" rollback-for="MyException" />
+            <!-- other methods use the default transaction settings (see below) -->
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <aop:config>
+        <aop:pointcut id="personServicePointCut" expression="execution(* com.springHibernate.service.PersonService.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="personServicePointCut"/>
+    </aop:config>
+    
+    
+    
 	
 </beans>
 	

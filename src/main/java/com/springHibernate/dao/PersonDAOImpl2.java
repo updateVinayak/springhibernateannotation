@@ -13,8 +13,7 @@ import com.springHibernate.model.Person;
 
 
 @Repository
-@Profile("DEV")
-public class PersonDAOImpl2 implements PersonDAO{
+public class PersonDAOImpl2{
 
 	
 	
@@ -43,6 +42,7 @@ public class PersonDAOImpl2 implements PersonDAO{
 		
 		Session session = this.sessionFactory.openSession();
         List<Person> personList = session.createQuery("from Person").list();
+        System.out.println("personList : " + personList);
         session.close();
         return personList;
 		

@@ -17,7 +17,9 @@ import com.springHibernate.service.PersonService;
 @ComponentScan(value="com.springHibernate")
 public class AppConfig {
 	
+	
 	@Bean
+	@Profile("DEV")
 	public BasicDataSource dataSource(){
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
@@ -30,6 +32,7 @@ public class AppConfig {
 	}
 	
 	@Bean
+	@Profile("DEV")
 	public AnnotationSessionFactoryBean sessionFactory(){
 		AnnotationSessionFactoryBean sessionFactory = new AnnotationSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());

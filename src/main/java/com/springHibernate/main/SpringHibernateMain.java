@@ -11,12 +11,14 @@ public class SpringHibernateMain {
 	public static void main(String[] args) {
 		
 		//ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		
-		
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		context.getEnvironment().setActiveProfiles("DEV");
+		context.register(AppConfig.class); 
+		context.refresh();
 		
 		Person person = new Person();
-        person.setName("Hemant"); person.setCountry("India");
+        person.setName("Prafull"); 
+        person.setCountry("India");
         
         PersonService personService = context.getBean(PersonService.class);
         personService.savePerson(person);

@@ -10,6 +10,7 @@ import com.springHibernate.model.Person;
 
 
 @Component
+@Profile("DEV")
 public class PersonService {
 
 	

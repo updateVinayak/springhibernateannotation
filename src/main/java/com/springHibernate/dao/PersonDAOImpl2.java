@@ -13,7 +13,8 @@ import com.springHibernate.model.Person;
 
 
 @Repository
-public class PersonDAOImpl2 {
+@Profile("DEV")
+public class PersonDAOImpl2 implements PersonDAO{
 
 	
 	

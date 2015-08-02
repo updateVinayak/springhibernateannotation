@@ -13,6 +13,7 @@ import com.springHibernate.model.Person;
 
 
 @Repository
+@Profile("QA")
 public class PersonDAOImpl implements PersonDAO{
 
 	@Autowired
